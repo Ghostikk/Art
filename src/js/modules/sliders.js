@@ -35,8 +35,8 @@ const sliders = (slides, direction, prev, next) => {
 
         prevBtn.addEventListener('click', () => {
             plusSlides(-1);
-            items[slideIndex-1].classList.remove('slideInLeft');
-            items[slideIndex-1].classList.add('slideInRight');
+            items[slideIndex - 1].classList.remove('slideInLeft');
+            items[slideIndex - 1].classList.add('slideInRight');
         });
 
         nextBtn.addEventListener('click', () => {
@@ -45,9 +45,7 @@ const sliders = (slides, direction, prev, next) => {
             items[slideIndex-1].classList.add('slideInLeft');
         });
 
-    } catch(error) {
-        console.log(error);
-    }
+    } catch(e){}
 
     function activatedAnimated() {
          // реализация вертикального слайдера
