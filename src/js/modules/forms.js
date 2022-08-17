@@ -3,7 +3,7 @@ const forms = () => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name = "upload"]');
-    
+            
     //Создаем объект с сообщениями, которые будет выводить пользователю
     const mess = {
           loading: 'Ожидайте, идет загрузка...',
