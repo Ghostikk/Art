@@ -1,4 +1,4 @@
-const meMask = (selector) => {
+const mask = (selector) => {
 
     let setCursorPosition = (position, element) => {
         element.focus();
@@ -50,5 +50,3 @@ const meMask = (selector) => {
     });
 };
 
-
-export default meMask;

@@ -3,7 +3,13 @@ const forms = () => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name = "upload"]');
-            
+    // проверка автозаполнения, уточнить работу
+    inputs.forEach(item => {
+        if(item.hasAttribute('name')) {
+            item.autocomplete="disabled";
+        }
+    });
+    
     //Создаем объект с сообщениями, которые будет выводить пользователю
     const mess = {
           loading: 'Ожидайте, идет загрузка...',
@@ -43,8 +49,8 @@ const forms = () => {
             let dots;
             const fileArr =  item.files[0].name.split('.');
             //обращаемся к первому загруженному файлу и разбиваем его на массив из двух частей с разделителем ".", далее обращаемся к первой части массиива и проверяем его длину и записываем в переменную dots
-            fileArr[0].length > 13 ? dots = '...' : dots = '.';
-            const name = fileArr[0].substring(0,13) + dots + fileArr[1];
+            fileArr[0].length > 7 ? dots = '...' : dots = '.';
+            const name = fileArr[0].substring(0,8) + dots + fileArr[1];
             item.previousElementSibling.textContent = name;
             console.log(item.files[0]);
             console.log(name);
@@ -68,7 +74,7 @@ const forms = () => {
 
             let statusImg = document.createElement('img');
                 statusImg.setAttribute('src', mess.spinner);
-                statusImg.classList.add('animated', 'fadeInUp');
+                statusImg.classList.add('animated', 'fadeInUp', 'getCentrImg');
                 // вот тут ОШИБКА? вставить нужно в конец StatusMessage, но не работает так
                 // statusMessage.appendChild(statusImg);
                 statusMessage.parentNode.appendChild(statusImg);

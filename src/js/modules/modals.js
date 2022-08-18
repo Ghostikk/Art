@@ -22,7 +22,7 @@ const modals = () => {
                 windows.forEach(item => {
                     item.style.display = 'none';
                     // добавление анимаций
-                    item.classList.add('animated', 'zoomIn');
+                    item.classList.add('animated', 'fadeIn');
                 });
 
                 modal.style.display = 'block';
@@ -105,7 +105,7 @@ const modals = () => {
   bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
   bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
   openByScroll ('.fixed-gift');
-  showModalByTime ('.popup-consultation', 20000);
+  showModalByTime ('.popup-consultation', 60000);
 };
 
 
