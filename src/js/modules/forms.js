@@ -3,11 +3,21 @@ const forms = () => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name = "upload"]');
+
+          
     // проверка автозаполнения, уточнить работу
     inputs.forEach(item => {
         if(item.hasAttribute('name')) {
-            item.autocomplete="disabled";
+            item.autocomplete = "disabled";
         }
+    // запрет ввода латиницы в поле name (нужно лучшить!)
+        item.addEventListener('keypress', function (e) {
+            if (item.getAttribute('name') === 'name' &&
+                e.key.match(/[^а-яё]/ig)) {
+                e.preventDefault();
+                item.value = this.value.match(/[^а-яё]/ig);
+            }
+        });
     });
     
     //Создаем объект с сообщениями, которые будет выводить пользователю
