@@ -1,20 +1,37 @@
-const showMoreStyles = (trigger, style) => {
-    const cards = document.querySelectorAll(style),
-          btn = document.querySelector(trigger);
+import {getResurce} from '../services/requests';
 
+const showMoreStyles = (trigger, wrapper) => {
+    const btn = document.querySelector(trigger);
 
-    cards.forEach(item => {
-        item.classList.add('animated', 'fadeInUp');
+    btn.addEventListener ('click', function () {
+        getResurce(`http://localhost:3000/styles`)
+            .then(result => createCard(result))
+            .catch(error => console.log(error));
+
+        this.remove();
     });
 
-    btn.addEventListener ('click', () => {
-        cards.forEach(item => {
-            item.classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs');
-            item.classList.add('col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
+    function createCard (response) {
+        response.forEach(({src, title, link}) => {
+            let card = document.createElement ('div');
+
+            card.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
+
+            card.innerHTML = `
+                <div class="styles-block">
+                    <img src=${src} alt="style">
+                    <h4>${title}</h4>
+                    <a href="${link}">Подробнее</a>
+                </div>
+            `;
+
+            document.querySelector(wrapper).appendChild(card);
         });
-        btn.style.display = 'none';
-    });
-
+    }
 };
 
 export default showMoreStyles;
+
+
+
+

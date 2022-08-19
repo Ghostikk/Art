@@ -1,25 +1,12 @@
+import {postData} from "../services/requests";
+
 const forms = () => {
 
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name = "upload"]');
 
-          
-    // проверка автозаполнения, уточнить работу
-    inputs.forEach(item => {
-        if(item.hasAttribute('name')) {
-            item.autocomplete = "disabled";
-        }
-    // запрет ввода латиницы в поле name (нужно лучшить!)
-        item.addEventListener('keypress', function (e) {
-            if (item.getAttribute('name') === 'name' &&
-                e.key.match(/[^а-яё]/ig)) {
-                e.preventDefault();
-                item.value = this.value.match(/[^а-яё]/ig);
-            }
-        });
-    });
-    
+  
     //Создаем объект с сообщениями, которые будет выводить пользователю
     const mess = {
           loading: 'Ожидайте, идет загрузка...',
@@ -36,21 +23,26 @@ const forms = () => {
           question:'assets/question.php',
     };
 
-    // функция для отправки запроса (асинх)
-    const postData = async (url, data) => {
-        document.querySelector('.status').innerHTML = mess.loading;
-        let result = await fetch(url, {
-            method: 'POST',
-            body: data
+    //проверка автозаполнения, уточнить работу
+    inputs.forEach(item => {
+        if(item.hasAttribute('name')) {
+            item.autocomplete = "disabled";
+        }
+    //запрет ввода латиницы в поле name (нужно улучшить!)
+        item.addEventListener('keypress', function (e) {
+            if (item.getAttribute('name') === 'name' &&
+                e.key.match(/[^а-яё]/ig)) {
+                e.preventDefault();
+                item.value = this.value.match(/[^а-яё]/ig);
+            }
         });
-        return await result.text();
-    };
+    });
 
     // Очищаем импуты форм
     const clearInputs = () => {
         inputs.forEach(item => item.value = '');
-        upload.forEach(item =>  item.previousElementSibling.textContent = 'Файл не выбран');
-        
+        upload.forEach(item =>
+            item.previousElementSibling.textContent = 'Файл не выбран');
     };
 
     //получение имени загруженного файла
@@ -102,8 +94,9 @@ const forms = () => {
 
             postData(api, formData)
                 .then(result => {
-                    console.log(result);
+                   console.log(result);
                     statusImg.setAttribute('src', mess.ok);
+                    textMessage.textContent = mess.success;
                     // statusMessage.parentNode.remove(statusImg);
                 })
                 .catch(() => {
