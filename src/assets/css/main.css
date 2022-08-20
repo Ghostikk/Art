@@ -637,6 +637,9 @@ h4 {
   text-align: center;
   position: relative;
   z-index: -1000;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 100%;
 }
 
 .calc .button-order {

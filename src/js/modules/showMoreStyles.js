@@ -6,7 +6,10 @@ const showMoreStyles = (trigger, wrapper) => {
     btn.addEventListener ('click', function () {
         getResurce(`http://localhost:3000/styles`)
             .then(result => createCard(result))
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                alert('Упс...Произошла ошибка доступа к серверу!');
+              });
 
         this.remove();
     });

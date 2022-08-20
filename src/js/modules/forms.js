@@ -86,15 +86,15 @@ const forms = () => {
                 statusMessage.appendChild(textMessage);
 
             const formData = new FormData(item);
+
             let api;
             // если форма содержит класс .popup-design тогда отправка по адресу path.designer иначе path.question
             item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;
             console.log(api);
 
-
             postData(api, formData)
                 .then(result => {
-                   console.log(result);
+                    console.log(result);
                     statusImg.setAttribute('src', mess.ok);
                     textMessage.textContent = mess.success;
                     // statusMessage.parentNode.remove(statusImg);
