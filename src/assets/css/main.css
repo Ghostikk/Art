@@ -760,11 +760,14 @@ h4 {
 .portfolio-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .portfolio-block {
   width: 20%;
   padding: 0.5rem;
+  padding-bottom: 1em;
 }
 
 .portfolio-block img {
