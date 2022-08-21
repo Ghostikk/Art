@@ -276,7 +276,7 @@ h4 {
 }
 
 .main .file_upload>div {
-  padding-left: 10px;
+  padding-left: 1em;
   /* example */
 
 }
@@ -637,9 +637,6 @@ h4 {
   text-align: center;
   position: relative;
   z-index: -1000;
-  font-weight: 700;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 100%;
 }
 
 .calc .button-order {
@@ -677,7 +674,7 @@ h4 {
 }
 
 .calc .file_upload>div {
-  padding-left: 10px
+  padding-left: 1em
     /* example */
   ;
 }
@@ -760,14 +757,11 @@ h4 {
 .portfolio-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .portfolio-block {
   width: 20%;
   padding: 0.5rem;
-  padding-bottom: 1em;
 }
 
 .portfolio-block img {
@@ -1090,10 +1084,33 @@ h4 {
   border-bottom: 2px dotted #333;
 }
 
+.often-questions p.active-style span {
+  color: #E950D7;
+  font-weight: 900;
+  text-decoration: none;
+  border: 0;
+}
+
+.often-questions .accordion-heading.active+.accordion-block {
+  display: block;
+}
+
 .often-questions .accordion-block {
-  margin-top: 1rem;
   background-color: #f7e7e6;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+  /* display: none; */
+  /* margin-top: 1rem; */
+  /* padding: 3rem 4rem; */
+}
+
+.often-questions .accordion-block.active-content {
+  overflow: visible;
+  opacity: 1;
   padding: 3rem 4rem;
+  margin-top: 1rem;
 }
 
 .often-questions .accordion-block:before {
@@ -1394,7 +1411,7 @@ h4 {
 }
 
 .popup-design .file_upload>div {
-  padding-left: none;
+  padding-left: 1em;
   /* example */
 
 }
@@ -1499,6 +1516,10 @@ h4 {
   border-radius: 4px;
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
+}
+
+.status {
+  text-align: center;
 }
 
 @media (max-width: 1399px) {
@@ -2102,23 +2123,4 @@ h4 {
     padding: 3rem 3rem;
     width: 25rem;
   }
-}
-
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.file_upload {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-around;
-}
-
-img.getCentrImg {
-  display: block;
-  margin: 0 auto;
 }
