@@ -46,6 +46,7 @@ const forms = () => {
     };
 
     //получение имени загруженного файла
+   
     upload.forEach(item => {
         item.addEventListener('input', () => {
             let dots;
@@ -54,11 +55,13 @@ const forms = () => {
             fileArr[0].length > 7 ? dots = '...' : dots = '.';
             const name = fileArr[0].substring(0,8) + dots + fileArr[1];
             item.previousElementSibling.textContent = name;
+            // console.group();
             console.log(item.files[0]);
-            console.log(name);
-            console.log(fileArr);
+            // console.log(name);
+            // console.log(fileArr);
+            // console.groupEnd();
         });
-    });
+  });
 
     //
     form.forEach(item => {

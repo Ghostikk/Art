@@ -761,6 +761,7 @@ h4 {
 .portfolio-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .portfolio-block {
@@ -1524,6 +1525,7 @@ h4 {
 
 .status {
   text-align: center;
+  margin: 0 auto;
 }
 
 .pageup {
@@ -1694,6 +1696,12 @@ h4 {
 }
 
 @media (max-width: 991px) {
+
+  input.promocode {
+    display: block;
+    margin: 0 auto;
+  }
+
   .header .burger {
     cursor: pointer;
   }
@@ -2141,4 +2149,16 @@ h4 {
     padding: 3rem 3rem;
     width: 25rem;
   }
+}
+
+
+.status img {
+  display: block;
+  margin: 0 auto;
+}
+
+img.animated.fadeInUp.getCentrImg {
+  display: block;
+  margin: 0 auto;
+  align-items: center;
 }
